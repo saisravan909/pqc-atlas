@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/pqc-atlas-map-premium.svg" width="120" alt="PQC-Atlas Logo" />
+<img src="assets/logo.png" width="300" alt="PQC-Atlas Logo" />
 
 # PQC-Atlas
 
