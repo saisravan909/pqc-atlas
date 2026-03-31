@@ -1,15 +1,26 @@
+<div align="center">
+
+![PQC-Atlas](https://raw.githubusercontent.com/saisravan909/pqc-atlas/main/logo.png)
+
 # PQC-Atlas
 
-> **Automated Cryptographic Discovery & Observability Engine**
-> *Find every quantum-vulnerable algorithm in your codebase — before a quantum computer finds it for you.*
+**Automated Cryptographic Discovery & Observability Engine**
+
+*Find every quantum-vulnerable algorithm in your codebase — before a quantum computer finds it for you.*
+
+</div>
 
 ---
+
+<div align="center">
 
 [![Go 1.21+](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat-square&logo=go&logoColor=white)](https://golang.org/)
 [![NIST FIPS 203/204](https://img.shields.io/badge/NIST-FIPS%20203%2F204-0057A8?style=flat-square)](https://csrc.nist.gov/projects/post-quantum-cryptography)
 [![CycloneDX 1.7](https://img.shields.io/badge/CycloneDX-1.7-6B46C1?style=flat-square)](https://cyclonedx.org/)
 [![Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-22C55E?style=flat-square)](../blob/main/LICENSE)
 [![CNSA 2.0](https://img.shields.io/badge/Mandate-NSM--10%20%7C%20CNSA%202.0-EF4444?style=flat-square)]()
+
+</div>
 
 ---
 
@@ -27,38 +38,56 @@ It runs in milliseconds. It requires no code execution. It integrates directly i
 
 ---
 
+## How It Works — One Diagram
+
+```mermaid
+graph TD
+    A["🏢 Your Codebase\nGo · Python · Java"] --> B["🔍 PQC-Atlas Scans\nEvery file, every function"]
+    B --> C["🔴 CRITICAL — RSA/ECC/DSA\nQuantum-Vulnerable"]
+    B --> D["🟠 HIGH — MD5/SHA-1\nAlready Broken"]
+    B --> E["✅ Clean Files"]
+    C --> F["📄 CycloneDX 1.7 CBOM\nFile · Line · Severity · Fix"]
+    D --> F
+    F --> G["🚫 CI Gate Blocks\nQuantum-unsafe PRs"]
+    F --> H["📊 NSM-10 Inventory\nCompliance evidence"]
+```
+
+---
+
 ## Navigate the Wiki
 
 | Page | For Whom | What You Will Learn |
 |------|----------|---------------------|
-| [Quick Start](Quick-Start) | Everyone | Scan your first codebase in under 5 minutes |
-| [Architecture](Architecture) | Engineers | How the scanner, scoring engine, and CBOM generator work |
-| [Risk Taxonomy](Risk-Taxonomy) | Security & Compliance | The three risk tiers, QES scoring, and decision matrix |
-| [CI/CD Integration](CI-CD-Integration) | DevSecOps | GitHub Actions gate setup and configuration |
-| [Glossary](Glossary) | Everyone | Every acronym and term used in plain English |
-| [Executive Brief](Executive-Brief) | C-Suite & Board | 5-minute non-technical summary of the problem and solution |
-| [Roadmap](Roadmap) | Stakeholders | Current capabilities and planned milestones through v2.0 |
-| [Contributing](Contributing) | Open Source Contributors | How to add algorithms, languages, and integrations |
-| [Security Policy](Security-Policy) | Security Researchers | Responsible disclosure and scope |
+| ⚡ [Quick Start](Quick-Start) | Everyone | Scan your first codebase in under 5 minutes |
+| 🔬 [Examples](Examples) | Everyone | Every finding explained in plain English — with diagrams |
+| 🏗️ [Architecture](Architecture) | Engineers | How the scanner, scoring engine, and CBOM generator work |
+| ⚠️ [Risk Taxonomy](Risk-Taxonomy) | Security & Compliance | The three risk tiers, QES scoring, and decision matrix |
+| 🔧 [CI/CD Integration](CI-CD-Integration) | DevSecOps | GitHub Actions gate setup and configuration |
+| 📖 [Glossary](Glossary) | Everyone | Every acronym and term used in plain English |
+| 📊 [Executive Brief](Executive-Brief) | C-Suite & Board | 5-minute non-technical summary of the problem and solution |
+| 🗺️ [Roadmap](Roadmap) | Stakeholders | Current capabilities and planned milestones through v2.0 |
+| 🤝 [Contributing](Contributing) | Open Source Contributors | How to add algorithms, languages, and integrations |
+| 🔐 [Security Policy](Security-Policy) | Security Researchers | Responsible disclosure and scope |
 
 ---
 
-## Live Demo — 17 Findings in 3.51ms
+## Live Demo — 16 Findings in 3.51ms
 
 ```
 $ go run main.go scan --path examples/legacy-app/
 
-[go]     main.go:15     RSA-Legacy-2048   CRITICAL  QES:1.00  → FIPS 203 ML-KEM
-[go]     main.go:24     ECDSA-Legacy      CRITICAL  QES:0.95  → FIPS 204 ML-DSA
-[python] auth.py:13     RSA-Legacy        CRITICAL  QES:1.00  → FIPS 203 ML-KEM
-[python] auth.py:21     ECC-Legacy        CRITICAL  QES:0.95  → FIPS 204 ML-DSA
-[java]   Token.java:16  RSA-Legacy        CRITICAL  QES:1.00  → FIPS 203 ML-KEM
-[java]   Token.java:24  ECC-Legacy        CRITICAL  QES:0.95  → FIPS 204 ML-DSA
+[go]     main.go:15              RSA-Legacy-2048   CRITICAL  QES:1.00  → FIPS 203 ML-KEM
+[go]     main.go:24              ECDSA-Legacy       CRITICAL  QES:0.95  → FIPS 204 ML-DSA
+[python] auth_service.py:12      RSA-Legacy-2048   CRITICAL  QES:1.00  → FIPS 203 ML-KEM
+[python] auth_service.py:18      ECC-Legacy         CRITICAL  QES:0.95  → FIPS 204 ML-DSA
+[java]   TokenService.java:10    RSA-Legacy-2048   CRITICAL  QES:1.00  → FIPS 203 ML-KEM
 ...
 
-[+] Scan Complete — 17 findings in 3.51ms
+[+] Scan Complete — 16 findings in 3.51ms
 [+] CBOM written to cbom.json (CycloneDX 1.7)
 ```
+
+> **See the full walkthrough →** [Examples page](Examples) — every finding explained in plain English with real-world analogies and diagrams.
 
 ---
 
@@ -66,8 +95,8 @@ $ go run main.go scan --path examples/legacy-app/
 
 | Metric | Value |
 |--------|-------|
-| Scan time (full microservice) | 3.51ms |
-| Findings detected (demo app) | 17 |
+| Scan time (full example app) | 3.51ms |
+| Findings detected (demo app) | 16 |
 | Languages supported | Go, Python, Java |
 | Algorithms detected | RSA, ECC, DSA, ECDSA, MD5, SHA-1, DES |
 | NIST standards mapped | FIPS 203, 204, 205, 202 |
@@ -78,6 +107,12 @@ $ go run main.go scan --path examples/legacy-app/
 
 ## Innovators
 
-**Sai Sravan Cherukuri** & **Sai Saketh Cherukuri**
+<div align="center">
+
+**Sai Sravan Cherukuri** &nbsp;&nbsp;|&nbsp;&nbsp; **Sai Saketh Cherukuri**
 
 *Built to protect the infrastructure of tomorrow — starting with the code of today.*
+
+[github.com/saisravan909/pqc-atlas](https://github.com/saisravan909/pqc-atlas)
+
+</div>
