@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
   "version": 1,
-  "serialNumber": "urn:uuid:pqc-atlas-1774917973658821545",
+  "serialNumber": "urn:uuid:pqc-atlas-1774918026693811914",
   "metadata": {
-    "timestamp": "2026-03-31T00:46:13Z",
+    "timestamp": "2026-03-31T00:47:06Z",
     "tools": [
       {
         "vendor": "Sai Sravan Cherukuri",
