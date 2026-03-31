@@ -28,6 +28,18 @@
 
 ---
 
+## Navigate by Role
+
+| I am a... | Start here |
+|-----------|-----------|
+| **Executive / Decision-maker** | [Executive Summary](docs/EXECUTIVE-SUMMARY.md) — 5-minute brief, no technical background required |
+| **Compliance officer / Auditor** | [Glossary & Risk Taxonomy](GLOSSARY.md) — all acronyms and risk tiers explained |
+| **Security engineer** | [Quick Start](#quick-start) below → [Contributing](CONTRIBUTING.md) |
+| **DevSecOps / CI-CD operator** | [CI/CD Integration](#cicd-gate--github-actions) section below |
+| **Project stakeholder** | [Roadmap](ROADMAP.md) — current state and planned milestones |
+
+---
+
 ## 📖 Table of Contents
 
 | | Section |
