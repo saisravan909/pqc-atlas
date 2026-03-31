@@ -40,8 +40,9 @@ export default function Slide07Closing() {
 
         <div className="flex items-center gap-[4vw]">
           <div className="text-center">
-            <p className="font-display text-[1.4vw] font-700 text-text">Sai Sravan Cherukuri</p>
-            <p className="font-body text-[1vw] text-muted">Creator, PQC-Atlas</p>
+            <p className="font-display text-[1.2vw] font-700 text-text">Sai Sravan Cherukuri</p>
+            <p className="font-display text-[1.2vw] font-700 text-text">Sai Saketh Cherukuri</p>
+            <p className="font-body text-[1vw] text-muted">Innovators, PQC-Atlas</p>
           </div>
           <div className="w-[1px] h-[5vh] bg-border" />
           <div className="text-center">

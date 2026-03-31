@@ -498,13 +498,15 @@ timeline
 ## 📄 License
 
 Distributed under the **Apache License 2.0**.
-Copyright © 2026 **Sai Sravan Cherukuri**. See [LICENSE](LICENSE) for full terms.
+Copyright © 2026 **Sai Sravan Cherukuri** & **Sai Saketh Cherukuri**. See [LICENSE](LICENSE) for full terms.
 
 ---
 
 <div align="center">
 
 **Built to protect the infrastructure of tomorrow — starting with the code of today.**
+
+*Innovators: Sai Sravan Cherukuri & Sai Saketh Cherukuri*
 
 [![GitHub Stars](https://img.shields.io/github/stars/saisravan909/pqc-atlas?style=for-the-badge&logo=github&color=yellow)](https://github.com/saisravan909/pqc-atlas/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/saisravan909/pqc-atlas?style=for-the-badge&logo=github&color=blue)](https://github.com/saisravan909/pqc-atlas/network)

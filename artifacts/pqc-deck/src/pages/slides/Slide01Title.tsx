@@ -31,8 +31,8 @@ export default function Slide01Title() {
 
         <div className="flex items-center gap-[3vw]">
           <div>
-            <p className="font-body text-[1.1vw] font-600 text-text">Sai Sravan Cherukuri</p>
-            <p className="font-body text-[1vw] font-400 text-muted">Creator, PQC-Atlas</p>
+            <p className="font-body text-[1.1vw] font-600 text-text">Sai Sravan Cherukuri &amp; Sai Saketh Cherukuri</p>
+            <p className="font-body text-[1vw] font-400 text-muted">Innovators, PQC-Atlas</p>
           </div>
           <div className="w-[1px] h-[4vh] bg-border" />
           <div className="flex gap-[1.5vw]">
