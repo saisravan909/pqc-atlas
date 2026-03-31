@@ -47,10 +47,10 @@ Thumbs.db
 # Generated outputs
 cbom.json
 
-# Replit uploaded assets (not part of the project)
+# Uploaded assets (not part of the project)
 attached_assets/
 
-# Replit
+# Local workspace files
 .cache/
 .local/
 .replit
