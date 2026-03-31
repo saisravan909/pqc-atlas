@@ -1,42 +1,58 @@
 <div align="center">
 
-<img src="logo.png" alt="PQC-Atlas Logo" width="200"/>
+<img src="assets/pqc-atlas-map-premium.svg" width="120" alt="PQC-Atlas Logo" />
 
 # PQC-Atlas
 
-### Cryptographic Observability Engine
+**Automated Cryptographic Discovery & Observability Engine**
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://golang.org/)
-[![NIST Compliant](https://img.shields.io/badge/NIST-FIPS%20203%2F204-0057A8?style=for-the-badge&logo=nist&logoColor=white)](https://csrc.nist.gov/projects/post-quantum-cryptography)
+[![NIST Compliant](https://img.shields.io/badge/NIST-FIPS%20203%2F204-0057A8?style=for-the-badge&logoColor=white)](https://csrc.nist.gov/projects/post-quantum-cryptography)
 [![CycloneDX](https://img.shields.io/badge/CycloneDX-1.7-6B46C1?style=for-the-badge)](https://cyclonedx.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge)]()
-[![Standard](https://img.shields.io/badge/PQC%20Ready-ML--KEM%20%7C%20ML--DSA-blueviolet?style=for-the-badge)]()
-
-> A specialized static analysis and observability framework that solves **Cryptographic Blindness** — automating the discovery of quantum-vulnerable cryptographic algorithms and generating a standardized migration path to Post-Quantum Cryptography (PQC).
+[![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=github-actions&logoColor=white)]()
+[![PQC Ready](https://img.shields.io/badge/PQC%20Ready-ML--KEM%20%7C%20ML--DSA-blueviolet?style=for-the-badge)]()
+[![Standard](https://img.shields.io/badge/Standard-NSM--10%20%7C%20CNSA%202.0-red?style=for-the-badge)]()
+[![HNDL](https://img.shields.io/badge/Threat%20Model-HNDL%20Aware-orange?style=for-the-badge)]()
 
 </div>
 
 ---
 
-## Overview
-
-PQC-Atlas scans your codebase for legacy cryptographic algorithms (RSA, ECC) and produces a **Cryptographic Bill of Materials (CBOM)** — a complete inventory of every cryptographic primitive in use, its quantum risk level, and its recommended NIST-approved replacement.
+PQC-Atlas is a high-fidelity cryptographic discovery framework designed to eliminate **"Cryptographic Blindness"** in the transition to Post-Quantum Cryptography (PQC). By treating cryptography as a first-class citizen in the DevSecOps pipeline, PQC-Atlas generates machine-readable **Cryptographic Bills of Materials (CBOM)** aligned with CycloneDX 1.7 and NIST FIPS 203/204 standards.
 
 ---
 
-## What PQC-Atlas Does
+## 🛡️ The Problem: Cryptographic Blindness
 
-| Capability | Description |
-|---|---|
-| **Multi-Language AST Discovery** | Parses Abstract Syntax Trees to identify real cryptographic calls, ignoring dead code and comments |
-| **Standards Mapping** | Cross-references every primitive against the Lattice Signature Database (LSDB), mapping legacy OIDs to NIST FIPS 203 and FIPS 204 |
-| **Compliance Gating** | Acts as a CI/CD quality gate — blocks commits that introduce non-compliant algorithms (e.g. RSA-2048) |
-| **Standardized Export** | Produces CycloneDX 1.7 compliant JSON output, integrating with federal and enterprise GRC platforms |
+As organizations face mandates like **NSM-10** and **CNSA 2.0**, the primary hurdle is not just migration, but discovery. Most enterprise codebases contain "hidden" cryptographic dependencies — legacy RSA-2048 keys, hardcoded primitives, and non-compliant third-party libraries — that create a massive, unmapped attack surface for future quantum adversaries.
+
+> **HNDL — "Harvest Now, Decrypt Later":** Adversaries are capturing encrypted traffic today to decrypt it once quantum computers become viable. The window to remediate is now.
 
 ---
 
-## How It Works
+## 🚀 Key Features
+
+- **AST-Based Discovery** — Deep code analysis for Go, Rust, and C++ to differentiate between active implementations and simple strings
+- **Automated CBOM Generation** — Produces a machine-readable inventory of every cryptographic asset in your repository (CycloneDX 1.7)
+- **Compliance Mapping** — Directly maps findings to NIST **FIPS 203 (ML-KEM)** and **FIPS 204 (ML-DSA)** readiness standards
+- **Quantum Exposure Scoring (QES)** — Automated risk assessment of legacy primitives using the formula $QES = (A_w \times E_f) + T_d$
+- **CI/CD Gating** — Seamlessly integrates into DevSecOps to prevent "cryptographic drift" in new pull requests
+
+---
+
+## 📊 Cryptographic Inventory (Sample)
+
+```mermaid
+pie title Cryptographic Inventory (Sample)
+    "ML-KEM (Quantum-Safe)" : 65
+    "RSA-3072 (Legacy-Safe)" : 25
+    "RSA-2048 (UNSAFE)" : 10
+```
+
+---
+
+## 🔍 How It Works
 
 When you run `pqc-atlas scan --path .`, the engine executes a four-stage pipeline:
 
@@ -46,7 +62,7 @@ The tool builds a mathematical model of your code (AST). This means it understan
 
 ### Stage 2 — Signature Matching
 
-The engine compares identified code nodes against the LSDB:
+The engine compares identified code nodes against the Lattice Signature Database (LSDB):
 
 ```
 Input:  CallExpr → GenerateKey with RSA
@@ -62,19 +78,19 @@ $$QES = (A_w \times E_f) + T_d$$
 
 | Variable | Meaning |
 |---|---|
-| `A_w` | Algorithm weight (severity of the primitive's quantum vulnerability) |
-| `E_f` | Exposure factor (how publicly accessible or critical the code path is) |
-| `T_d` | Time decay (urgency based on NIST migration timeline) |
+| `A_w` | Algorithm weight — severity of the primitive's quantum vulnerability |
+| `E_f` | Exposure factor — how publicly accessible or critical the code path is |
+| `T_d` | Time decay — urgency based on NIST migration timeline |
 
 ### Stage 4 — Report Generation
 
-Outputs a **CBOM** in CycloneDX 1.7 JSON format, listing every cryptographic primitive found, its QES score, and its recommended PQC replacement standard.
+Outputs a **CBOM** in CycloneDX 1.7 JSON format listing every primitive found, its QES score, and its recommended PQC replacement.
 
 ---
 
-## Legacy Crypto "Heatmap"
+## 🗺️ Legacy Crypto Heatmap
 
-PQC-Atlas identifies **Hot Spots** within a microservice mesh by analyzing the concentration of deprecated algorithms. By mapping service-to-service communication, the framework flags high-traffic nodes still relying on legacy RSA or ECC primitives. This allows security teams to prioritize remediation efforts on the most vulnerable entry points in the infrastructure.
+PQC-Atlas identifies **Hot Spots** within a microservice mesh by analyzing the concentration of deprecated algorithms. By mapping service-to-service communication, the framework flags high-traffic nodes still relying on legacy RSA or ECC primitives — allowing security teams to prioritize remediation on the most vulnerable entry points.
 
 ```
  Microservice Mesh — Cryptographic Risk Heat Map
@@ -94,21 +110,19 @@ PQC-Atlas identifies **Hot Spots** within a microservice mesh by analyzing the c
 
 ---
 
-## Standards Compliance
-
-PQC-Atlas maps findings to the latest NIST Post-Quantum Cryptography standards:
+## 🔬 Standards Compliance
 
 | Legacy Algorithm | Vulnerability | NIST Replacement |
 |---|---|---|
 | RSA-2048 / RSA-4096 | Broken by Shor's Algorithm | FIPS 204 — ML-DSA (CRYSTALS-Dilithium) |
-| ECDSA / ECDH | Broken by Shor's Algorithm | FIPS 204 — ML-DSA / FIPS 203 — ML-KEM |
+| ECDSA / ECDH | Broken by Shor's Algorithm | FIPS 203 — ML-KEM (CRYSTALS-Kyber) |
 | DSA | Broken by Shor's Algorithm | FIPS 204 — ML-DSA (CRYSTALS-Dilithium) |
 | MD5 | Classically broken + Grover weakened | SHA-3 (FIPS 202) |
 | AES-128 | Weakened by Grover's Algorithm | AES-256 (symmetric uplift) |
 
 ---
 
-## Sample CBOM Output
+## 📄 Sample CBOM Output
 
 PQC-Atlas exports data in a standardized JSON format, allowing for instant ingestion by federal risk management tools.
 
@@ -144,12 +158,13 @@ PQC-Atlas exports data in a standardized JSON format, allowing for instant inges
 
 ---
 
-## Installation & Usage
+## 🛠️ Installation & Usage
 
 ### Prerequisites
 
 - Go 1.21+
-- A target source code repository
+- A container runtime (Docker/Podman) or a Nix-based environment
+- The target source code repository
 
 ### Quick Start
 
@@ -158,7 +173,7 @@ PQC-Atlas exports data in a standardized JSON format, allowing for instant inges
 git clone https://github.com/saisravan909/pqc-atlas.git
 cd pqc-atlas
 
-# Run a local scan (table output)
+# Run a local audit scan (table output)
 go run main.go scan --path ./examples/legacy-app
 
 # Export a CycloneDX 1.7 CBOM
@@ -170,25 +185,22 @@ go run main.go audit --path . --fail-on-violation
 
 ### CI/CD Integration
 
-PQC-Atlas can be used as a compliance gate in any pipeline:
-
 ```yaml
 # GitHub Actions example
 - name: PQC Compliance Scan
   run: go run main.go audit --path . --fail-on-violation
 ```
 
-If a non-compliant algorithm is detected, the build fails with a full report of the violation and its recommended fix.
-
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 pqc-atlas/
 ├── main.go                  # CLI entry point (scan, audit, export)
 ├── go.mod
 ├── ARCHITECTURE.md
+├── assets/                  # Logos and static assets
 ├── pkg/
 │   ├── scanner/ast.go       # AST discovery engine
 │   ├── cbom/cyclonedx.go    # CycloneDX 1.7 CBOM marshaller
@@ -200,7 +212,7 @@ pqc-atlas/
 
 ---
 
-## The PQC-Atlas Ecosystem
+## 🔗 The PQC-Atlas Ecosystem
 
 | Tool | Purpose | Status |
 |---|---|---|
@@ -210,12 +222,12 @@ pqc-atlas/
 
 ---
 
-## Author
+## 👤 Author
 
 **Sai Sravan Cherukuri**
 
 ---
 
-## License
+## 📄 License
 
 Distributed under the Apache License 2.0. See [LICENSE](LICENSE) for more information.
