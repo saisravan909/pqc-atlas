@@ -54,6 +54,7 @@ attached_assets/
 *.nix
 *.lock
 .env*
+replit.md
 
 # Node/JS workspace infrastructure (dev environment only)
 artifacts/
