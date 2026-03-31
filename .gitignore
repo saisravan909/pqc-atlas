@@ -55,6 +55,7 @@ attached_assets/
 *.lock
 .env*
 replit.md
+.agents/
 
 # Node/JS workspace infrastructure (dev environment only)
 artifacts/
