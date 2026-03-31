@@ -1,0 +1,58 @@
+[
+  {
+    "id": "a1b2c3d4-0001-4000-8000-000000000001",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide01Title.tsx",
+    "title": "PQC-Atlas",
+    "description": "Title slide introducing PQC-Atlas and key stats.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0002-4000-8000-000000000002",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide02Stakes.tsx",
+    "title": "The Quantum Threat Is Real",
+    "description": "HNDL threat model and the 2030 CNSA 2.0 compliance deadline.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0003-4000-8000-000000000003",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide03Blindness.tsx",
+    "title": "Cryptographic Blindness",
+    "description": "Why organizations cannot migrate what they cannot find.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0004-4000-8000-000000000004",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide04HowItWorks.tsx",
+    "title": "Three Steps. Zero Guesswork.",
+    "description": "How PQC-Atlas works: Scan, Score, Report.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0005-4000-8000-000000000005",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide05LiveResults.tsx",
+    "title": "Live Results",
+    "description": "17 findings across 3 languages in 3.51ms — real output, no mocks.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0006-4000-8000-000000000006",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide06CIGate.tsx",
+    "title": "The CI/CD Gate",
+    "description": "GitHub Actions gate that blocks quantum-vulnerable code from merging.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0007-4000-8000-000000000007",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide07Closing.tsx",
+    "title": "The 2030 Deadline Is Not Optional",
+    "description": "Closing slide with call to action and contact details.",
+    "speakerNotes": ""
+  }
+]
