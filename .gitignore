@@ -50,13 +50,10 @@ attached_assets/
 # Local dev workspace files (not part of the project)
 .cache/
 .local/
-.replit
-.replitignore
-replit.md
-replit.nix
-replit.lock
-.replit-artifact/
 .breakpoints/
+*.nix
+*.lock
+.env*
 
 # Node/JS workspace infrastructure (dev environment only)
 artifacts/
