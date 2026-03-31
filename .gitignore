@@ -57,4 +57,13 @@ attached_assets/
 .replitignore
 replit.md
 replit.nix
+replit.lock
 .replit-artifact/
+.breakpoints/
+
+# Go build output
+bin/
+vendor/
+*.exe
+*.test
+core
