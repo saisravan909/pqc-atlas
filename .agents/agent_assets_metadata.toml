@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Hq65MznJ4q0TlYiQXdO3V"
+uri = "file://pqc-atlas-slides.tar.gz"
+type = "unspecified"
+title = "PQC-Atlas Conference Slides"
