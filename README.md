@@ -27,6 +27,39 @@ As organizations face mandates like **NSM-10** and **CNSA 2.0**, the primary hur
 
 ---
 
+## 🌉 The Big Picture: A Bridge Analogy
+
+> *For non-technical stakeholders, executives, and policy reviewers.*
+
+```
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║   THE OLD BRIDGE           THE INSPECTION         THE BLUEPRINT          ║
+║   (Your Codebase)          (PQC-Atlas)            (The CBOM)             ║
+║                                                                          ║
+║   ┌─────────────┐          ┌─────────────┐        ┌─────────────┐        ║
+║   │  🌉         │          │  🔍         │        │  📋         │        ║
+║   │  RSA-2048   │  ──────► │  AST Scan   │ ─────► │  50 weak    │        ║
+║   │  ECC Keys   │          │  Deep Audit │        │  spots      │        ║
+║   │  Legacy TLS │          │  LSDB Check │        │  mapped     │        ║
+║   └──────┬──────┘          └─────────────┘        └──────┬──────┘        ║
+║          │                                               │               ║
+║          │  ⚠️  A STORM IS COMING                        │               ║
+║          │  (Quantum Computing)                          ▼               ║
+║          │                                  "Replace bolt #12 with       ║
+║          └──────────────────────────────►   ML-KEM-1024. Replace         ║
+║                                             beam #7 with ML-DSA."        ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+| 🌉 The Old Bridge | 🔍 The Inspection | 📋 The Blueprint |
+|---|---|---|
+| Your existing codebase using legacy RSA-2048 or ECC encryption. It works fine today — but a storm is coming. | PQC-Atlas "walks" your entire codebase, finding every weak bolt and cracked timber — every quantum-vulnerable algorithm — without touching the code. | The output: a professional **CBOM** that says exactly which 50 spots are at risk and precisely what NIST-approved material to replace them with. |
+| **The Storm** = Quantum computers able to break RSA in hours, not centuries. | **Zero-Touch** = Static analysis. No code is executed. No risk to production systems. | **The Fix** = A clear, standardized migration roadmap to ML-KEM and ML-DSA. |
+
+---
+
 ## 🚀 Key Features
 
 - **AST-Based Discovery:** Deep code analysis for Go, Rust, and C++ to differentiate between active implementations and simple strings.
