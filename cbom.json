@@ -1,0 +1,254 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "version": 1,
+  "serialNumber": "urn:uuid:pqc-atlas-1774917884755909532",
+  "metadata": {
+    "timestamp": "2026-03-31T00:44:44Z",
+    "tools": [
+      {
+        "vendor": "Sai Sravan Cherukuri",
+        "name": "pqc-atlas",
+        "version": "0.1.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-1",
+      "name": "RSA",
+      "description": "RSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/main.go"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "15"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.1000"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "crypto/rsa"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "public-key-encryption",
+          "parameterSetIdentifier": "2048",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "rsa.GenerateKey"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-2",
+      "name": "ECDSA",
+      "description": "ECDSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/main.go"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "24"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "crypto/ecdsa"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "ecdsa.GenerateKey"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-3",
+      "name": "ECC",
+      "description": "Elliptic curve cryptography is vulnerable to Shor's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/main.go"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "24"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.8150"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "crypto/elliptic"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 203 — ML-KEM (CRYSTALS-Kyber)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "elliptic.P256"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-4",
+      "name": "MD5",
+      "description": "MD5 is classically broken and weakened further by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/main.go"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "33"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "HIGH"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.5700"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "crypto/md5"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "md5.New"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-5",
+      "name": "SHA-1",
+      "description": "SHA-1 is classically deprecated and weakened by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/main.go"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "40"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.4300"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "crypto/sha1"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "sha1.New"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    }
+  ]
+}

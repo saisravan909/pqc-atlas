@@ -1,119 +1,143 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/saisravan909/pqc-atlas/pkg/cbom"
 	"github.com/saisravan909/pqc-atlas/pkg/scanner"
 )
 
-const version = "0.1.0"
-
 func main() {
-	if len(os.Args) < 2 {
-		printUsage()
+	fmt.Println("--------------------------------------------------")
+	fmt.Println(" PQC-ATLAS: Cryptographic Observability Engine")
+	fmt.Println(" Status: NIST FIPS 203/204 Compliance Mode")
+	fmt.Println("--------------------------------------------------")
+
+	if len(os.Args) < 3 {
+		fmt.Println("Usage: pqc-atlas scan --path <directory>")
+		fmt.Println("       pqc-atlas audit --path <directory> [--fail-on-violation]")
+		fmt.Println("       pqc-atlas export --path <directory> --out <file>")
 		os.Exit(1)
 	}
 
 	switch os.Args[1] {
 	case "scan":
-		runScan(os.Args[2:])
+		runScan()
 	case "audit":
-		runAudit(os.Args[2:])
+		runAudit()
 	case "export":
-		runExport(os.Args[2:])
-	case "version":
-		fmt.Printf("pqc-atlas v%s\n", version)
+		runExport()
 	default:
-		fmt.Fprintf(os.Stderr, "error: unknown command %q\n\n", os.Args[1])
-		printUsage()
+		fmt.Fprintf(os.Stderr, "[!] Unknown command: %s\n", os.Args[1])
 		os.Exit(1)
 	}
 }
 
-func printUsage() {
-	fmt.Println("PQC-Atlas — Cryptographic Bill of Materials Generator")
-	fmt.Println()
-	fmt.Println("Usage:")
-	fmt.Println("  pqc-atlas scan   --path <dir> [--format table|json]")
-	fmt.Println("  pqc-atlas audit  --path <dir> [--fail-on-violation]")
-	fmt.Println("  pqc-atlas export --path <dir> --out <file>")
-	fmt.Println("  pqc-atlas version")
-}
+func runScan() {
+	if len(os.Args) < 4 {
+		fmt.Println("[!] Usage: pqc-atlas scan --path <directory>")
+		os.Exit(1)
+	}
 
-func runScan(args []string) {
-	fs := flag.NewFlagSet("scan", flag.ExitOnError)
-	path := fs.String("path", ".", "Directory to scan")
-	format := fs.String("format", "table", "Output format: table or json")
-	_ = fs.Parse(args)
+	targetPath := os.Args[3]
+	fmt.Printf("[*] Initializing AST Discovery on: %s\n", targetPath)
 
-	findings, err := scanner.ScanPath(*path)
+	start := time.Now()
+
+	findings, err := scanner.PerformScan(targetPath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "scan error: %v\n", err)
+		fmt.Printf("[!] Error during scan: %v\n", err)
 		os.Exit(1)
 	}
 
-	if len(findings) == 0 {
-		fmt.Println("No quantum-vulnerable cryptographic primitives detected.")
-		return
-	}
+	duration := time.Since(start)
+	fmt.Printf("[+] Scan Complete. Found %d cryptographic primitives.\n", len(findings))
+	fmt.Printf("[+] Time Elapsed: %v\n", duration)
+	fmt.Println("--------------------------------------------------")
 
-	switch *format {
-	case "json":
-		cbom.Export(findings, os.Stdout)
-	default:
+	if len(findings) > 0 {
 		scanner.PrintTable(findings)
+		fmt.Println("--------------------------------------------------")
 	}
+
+	fmt.Println("[*] Exporting CycloneDX 1.7 CBOM to: ./cbom.json")
+
+	f, err := os.Create("cbom.json")
+	if err != nil {
+		fmt.Printf("[!] Failed to create cbom.json: %v\n", err)
+		os.Exit(1)
+	}
+	defer f.Close()
+	cbom.Export(findings, f)
+
+	fmt.Printf("[+] CBOM written successfully (%d component(s))\n", len(findings))
 }
 
-func runAudit(args []string) {
-	fs := flag.NewFlagSet("audit", flag.ExitOnError)
-	path := fs.String("path", ".", "Directory to audit")
-	failOnViolation := fs.Bool("fail-on-violation", false, "Exit with code 1 if violations found")
-	_ = fs.Parse(args)
+func runAudit() {
+	if len(os.Args) < 4 {
+		fmt.Println("[!] Usage: pqc-atlas audit --path <directory>")
+		os.Exit(1)
+	}
 
-	findings, err := scanner.ScanPath(*path)
+	targetPath := os.Args[3]
+	failOnViolation := len(os.Args) > 4 && os.Args[4] == "--fail-on-violation"
+
+	fmt.Printf("[*] Running Compliance Audit on: %s\n", targetPath)
+
+	findings, err := scanner.PerformScan(targetPath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "audit error: %v\n", err)
+		fmt.Printf("[!] Error during audit: %v\n", err)
 		os.Exit(1)
 	}
 
 	violations := scanner.FilterViolations(findings)
+	fmt.Println("--------------------------------------------------")
 
 	if len(violations) == 0 {
-		fmt.Println("[PASS] No quantum-vulnerable algorithms detected. Codebase is PQC compliant.")
+		fmt.Println("[PASS] No quantum-vulnerable algorithms detected.")
+		fmt.Println("[PASS] Codebase is NIST PQC compliant.")
 		return
 	}
 
 	fmt.Printf("[FAIL] %d quantum-vulnerable algorithm(s) detected:\n\n", len(violations))
 	scanner.PrintTable(violations)
 
-	if *failOnViolation {
+	if failOnViolation {
 		os.Exit(1)
 	}
 }
 
-func runExport(args []string) {
-	fs := flag.NewFlagSet("export", flag.ExitOnError)
-	path := fs.String("path", ".", "Directory to scan")
-	out := fs.String("out", "cbom.json", "Output file path")
-	_ = fs.Parse(args)
-
-	findings, err := scanner.ScanPath(*path)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "export error: %v\n", err)
+func runExport() {
+	if len(os.Args) < 4 {
+		fmt.Println("[!] Usage: pqc-atlas export --path <directory> --out <file>")
 		os.Exit(1)
 	}
 
-	f, err := os.Create(*out)
+	targetPath := os.Args[3]
+	outFile := "cbom.json"
+	for i, arg := range os.Args {
+		if arg == "--out" && i+1 < len(os.Args) {
+			outFile = os.Args[i+1]
+		}
+	}
+
+	fmt.Printf("[*] Exporting CBOM for: %s\n", targetPath)
+
+	findings, err := scanner.PerformScan(targetPath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to create output file: %v\n", err)
+		fmt.Printf("[!] Export error: %v\n", err)
+		os.Exit(1)
+	}
+
+	f, err := os.Create(outFile)
+	if err != nil {
+		fmt.Printf("[!] Failed to create %s: %v\n", outFile, err)
 		os.Exit(1)
 	}
 	defer f.Close()
 
 	cbom.Export(findings, f)
-	fmt.Printf("CBOM exported to %s (%d finding(s))\n", *out, len(findings))
+	fmt.Printf("[+] CBOM exported to %s (%d finding(s))\n", outFile, len(findings))
 }
