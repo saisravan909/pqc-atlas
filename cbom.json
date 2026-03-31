@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
   "version": 1,
-  "serialNumber": "urn:uuid:pqc-atlas-1774917884755909532",
+  "serialNumber": "urn:uuid:pqc-atlas-1774917973658821545",
   "metadata": {
-    "timestamp": "2026-03-31T00:44:44Z",
+    "timestamp": "2026-03-31T00:46:13Z",
     "tools": [
       {
         "vendor": "Sai Sravan Cherukuri",
@@ -17,7 +17,7 @@
     {
       "type": "cryptographic-asset",
       "bom-ref": "pqc-finding-1",
-      "name": "RSA",
+      "name": "RSA-Legacy",
       "description": "RSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
       "properties": [
         {
@@ -48,7 +48,7 @@
       "cryptoProperties": {
         "assetType": "algorithm",
         "algorithmProperties": {
-          "primitive": "public-key-encryption",
+          "primitive": "other",
           "parameterSetIdentifier": "2048",
           "executionEnvironment": "software",
           "implementationPlatform": "go",
@@ -65,7 +65,7 @@
     {
       "type": "cryptographic-asset",
       "bom-ref": "pqc-finding-2",
-      "name": "ECDSA",
+      "name": "ECDSA-Legacy",
       "description": "ECDSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
       "properties": [
         {
@@ -96,7 +96,7 @@
       "cryptoProperties": {
         "assetType": "algorithm",
         "algorithmProperties": {
-          "primitive": "signature",
+          "primitive": "other",
           "executionEnvironment": "software",
           "implementationPlatform": "go",
           "certificationLevel": [
@@ -112,7 +112,7 @@
     {
       "type": "cryptographic-asset",
       "bom-ref": "pqc-finding-3",
-      "name": "ECC",
+      "name": "ECC-Legacy",
       "description": "Elliptic curve cryptography is vulnerable to Shor's Algorithm.",
       "properties": [
         {
@@ -143,7 +143,7 @@
       "cryptoProperties": {
         "assetType": "algorithm",
         "algorithmProperties": {
-          "primitive": "key-agree",
+          "primitive": "other",
           "executionEnvironment": "software",
           "implementationPlatform": "go",
           "certificationLevel": [
