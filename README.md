@@ -79,6 +79,13 @@ pie title Cryptographic Inventory (Sample)
     "RSA-2048 (UNSAFE)" : 10
 ```
 
+| Algorithm | Status | NIST Standard | Readiness |
+| :--- | :--- | :--- | :--- |
+| **ML-KEM** | ✅ Secured | FIPS 203 | Quantum-Safe |
+| **ML-DSA** | ✅ Secured | FIPS 204 | Quantum-Safe |
+| **RSA-3072** | ⚠️ Legacy | FIPS 186-5 | Vulnerable |
+| **RSA-2048** | 🛑 Critical | Deprecated | High Risk |
+
 ---
 
 ## 🔥 Legacy Crypto "Heatmap"
