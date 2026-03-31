@@ -1,0 +1,39 @@
+name: PQC-Atlas Compliance Audit
+
+on:
+  pull_request:
+    branches: ["main", "master"]
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  pqc-audit:
+    name: Cryptographic Compliance Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
+      - name: Build PQC-Atlas scanner
+        run: go build -o pqc-atlas ./main.go
+
+      - name: Run cryptographic audit
+        run: ./pqc-atlas audit --path . --fail-on-violation
+
+      - name: Export CBOM artifact
+        if: always()
+        run: ./pqc-atlas export --path . --out cbom.json
+
+      - name: Upload CBOM as build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbom-cyclonedx-${{ github.sha }}
+          path: cbom.json
+          retention-days: 90

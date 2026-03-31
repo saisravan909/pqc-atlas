@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
   "version": 1,
-  "serialNumber": "urn:uuid:pqc-atlas-1774918026693811914",
+  "serialNumber": "urn:uuid:pqc-atlas-1774919235589367417",
   "metadata": {
-    "timestamp": "2026-03-31T00:47:06Z",
+    "timestamp": "2026-03-31T01:07:15Z",
     "tools": [
       {
         "vendor": "Sai Sravan Cherukuri",
@@ -17,6 +17,570 @@
     {
       "type": "cryptographic-asset",
       "bom-ref": "pqc-finding-1",
+      "name": "RSA-Legacy",
+      "description": "RSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "16"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "KeyPairGenerator.getInstance(\"RSA\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-2",
+      "name": "ECC-Legacy",
+      "description": "Elliptic curve cryptography is vulnerable to Shor's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "24"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0050"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 203 — ML-KEM (CRYSTALS-Kyber)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "KeyPairGenerator.getInstance(\"EC\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-3",
+      "name": "DSA-Legacy",
+      "description": "DSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "32"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "KeyPairGenerator.getInstance(\"DSA\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-4",
+      "name": "RSA-Legacy",
+      "description": "RSA-based signature schemes are broken by Shor's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "40"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "Signature.getInstance(\"SHA*withRSA\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-5",
+      "name": "RSA-Legacy",
+      "description": "RSA cipher mode is broken by Shor's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "49"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "Cipher.getInstance(\"RSA/...\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-6",
+      "name": "MD5",
+      "description": "MD5 is classically broken and weakened further by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "57"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "HIGH"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.6900"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "MessageDigest.getInstance(\"MD5\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-7",
+      "name": "SHA-1",
+      "description": "SHA-1 is classically deprecated and weakened by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/TokenService.java"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "65"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.5100"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "java.security / javax.crypto"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "MessageDigest.getInstance(\"SHA-1\")"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-8",
+      "name": "RSA-Legacy",
+      "description": "RSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/auth_service.py"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "13"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "python:cryptography"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "rsa.generate_private_key()"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-9",
+      "name": "ECC-Legacy",
+      "description": "Elliptic curve cryptography is vulnerable to Shor's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/auth_service.py"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "21"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0050"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "python:cryptography"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 203 — ML-KEM (CRYSTALS-Kyber)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "ec.generate_private_key()"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-10",
+      "name": "DSA-Legacy",
+      "description": "DSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/auth_service.py"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "28"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "1.0500"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "python:cryptography"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "FIPS 204 — ML-DSA (CRYSTALS-Dilithium)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "dsa.generate_parameters()"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-11",
+      "name": "MD5",
+      "description": "MD5 is classically broken and weakened further by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/auth_service.py"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "36"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "HIGH"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.6900"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "python:cryptography"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "hashlib.md5()"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-12",
+      "name": "SHA-1",
+      "description": "SHA-1 is classically deprecated and weakened by Grover's Algorithm.",
+      "properties": [
+        {
+          "name": "pqc-atlas:file",
+          "value": "examples/legacy-app/auth_service.py"
+        },
+        {
+          "name": "pqc-atlas:line",
+          "value": "41"
+        },
+        {
+          "name": "pqc-atlas:risk",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "pqc-atlas:qes",
+          "value": "0.5100"
+        },
+        {
+          "name": "pqc-atlas:package",
+          "value": "python:cryptography"
+        },
+        {
+          "name": "pqc-atlas:nist-replacement",
+          "value": "SHA-3 (FIPS 202)"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "software",
+          "implementationPlatform": "go",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "hashlib.sha1()"
+          ],
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pqc-finding-13",
       "name": "RSA-Legacy",
       "description": "RSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
       "properties": [
@@ -64,7 +628,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "pqc-finding-2",
+      "bom-ref": "pqc-finding-14",
       "name": "ECDSA-Legacy",
       "description": "ECDSA is broken by Shor's Algorithm on a sufficiently powerful quantum computer.",
       "properties": [
@@ -111,7 +675,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "pqc-finding-3",
+      "bom-ref": "pqc-finding-15",
       "name": "ECC-Legacy",
       "description": "Elliptic curve cryptography is vulnerable to Shor's Algorithm.",
       "properties": [
@@ -158,7 +722,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "pqc-finding-4",
+      "bom-ref": "pqc-finding-16",
       "name": "MD5",
       "description": "MD5 is classically broken and weakened further by Grover's Algorithm.",
       "properties": [
@@ -205,7 +769,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "pqc-finding-5",
+      "bom-ref": "pqc-finding-17",
       "name": "SHA-1",
       "description": "SHA-1 is classically deprecated and weakened by Grover's Algorithm.",
       "properties": [
